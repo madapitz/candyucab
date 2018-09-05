@@ -1,0 +1,21 @@
+tr td input.form-control.cantidad{
+    width: 60px !important;
+    margin-bottom: -37px;
+    margin-right: 20px;
+    display: inline-block;
+}
+
+.carrito{
+    border-radius: 100%;
+    background: #ea125e;
+    border-color: #ea125e;
+    font-weight: 600;
+}
+
+.carrito:hover{
+    background-color: rgba(255,202,208, 0.9);
+    border-color: rgba(255,202,208, 0.9);
+    color: #ea125e;
+    font-weight: 900;
+}
+

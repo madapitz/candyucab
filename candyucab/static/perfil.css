@@ -1,0 +1,16 @@
+main div a.opcion{
+    color: #1b1e21;
+}
+
+main div a.opcion:hover{
+    text-decoration: none;
+    outline: none;
+    color: #ea125e;
+    border-bottom: 1px solid rgb(255,202,208);
+
+}
+
+main div.opciones{
+    margin-top: 20%;
+    font-size: 30px;
+}

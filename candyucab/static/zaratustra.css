@@ -1,0 +1,31 @@
+.proust{
+    margin-top: 250px;
+}
+
+.proust a{
+    max-width: 20%;
+    font-weight: 600;
+}
+
+#si,#no,#tarc,#tard,#cheq{
+    color: white;
+    background: #ea125e;
+    border: none;
+}
+
+#tarc{
+    margin-left: 195px;
+}
+
+#si{
+    margin-left: 380px;
+}
+
+#no,#tard,#cheq{
+    margin-left: 40px;
+}
+
+#si:hover,#no:hover,#tard:hover,#tarc:hover,#cheq:hover{
+    background: #1b1e21;
+    color: #ea125e;
+}

@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
+
+.cabecera{
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
+
+main{
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.estructura{
+    width: 340px;
+    margin: 0 auto;
+}
+
+.cabecera h1{
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+}
+
+.formulario .cuerpo{
+    border-top: 1px solid #d8dee2;
+    border-radius: 5px;
+}
+
+.cuerpo{
+    padding: 20px;
+    font-size: 18px;
+    background-color: #fff;
+    border: 1px solid #d8dee2;
+}
+
+.cuerpo label{
+    display: block;
+    margin-bottom: 7px;
+}
+
+label{
+    font-weight: 600;
+}
+
+.cuerpo input{
+    margin-top: 5px;
+    margin-bottom: 15px;
+    height: 35px;
+    padding: 10px;
+}
+
+.cuerpo input.form-control{
+    display: block;
+    width: 100%;
+}
+
+.cuerpo > div .form-check-label{
+    font-weight: 300;
+    font-size: 17px;
+    margin-left: 10px;
+}
+
+.form-check-input{
+    margin-top: -0.2rem !important;
+}
+
+#submit{
+    margin-top: 20px;
+    margin-bottom: -10px;
+    padding-top: 2.03px;
+    font-size: 20px;
+    font-weight: 600;
+    background: #ea125e;
+}
+
+.cuerpo.no_esta{
+    border-radius: 5px;
+}
+
+.cuerpo.no_esta a{
+    color: #ea125e;
+}
