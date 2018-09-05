@@ -1,0 +1,30 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="form-group">
+  <h3>Diario Dulce</h3>
+
+</div>
+<table class="table table-hover tiendas">
+  <thead>
+    <tr>
+      <th scope="col">Nombre  </th>
+      <th scope="col">Precio</th>
+      <th scope="col">Con Descuento</th>
+      <th scope="col">Imagen</th>
+
+    </tr>
+  </thead>
+  <tbody>
+      {% for producto in productos %}
+      <tr>
+      <th scope="row">{{producto['p_nombre']}}</th>
+      <td>{{producto['p_precio']}}</td><td>{{producto['descuento']}}</td>
+    <td><img class="rounded-circle account-img" src="{{ url_for('static',filename = 'images/'+producto['p_imagen']) }}"></td>
+      </tr>
+    {% endfor %}
+    </tr>
+  </tbody>
+</table>
+
+
+{%endblock content%}

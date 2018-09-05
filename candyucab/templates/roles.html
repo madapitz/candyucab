@@ -1,0 +1,29 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="container">
+  <h3>Roles</h3>
+  <p class="">
+      <a href="{{ url_for('create_rol') }}">Crear Rol<a>
+  </p>
+</div>
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">Nombre del rol</th>
+      <th scope="col">Funcion</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for rol in roles %}
+      <tr>
+      <th scope="row"> <a  class="mr-2" href="{{ url_for('update_rol',r_id=rol['r_id']) }}">{{rol['r_tipo']}} </a></th>
+      <td>{{rol['per_funcion']}}</td>
+      </tr>
+    {% endfor %}
+    </tr>
+  </tbody>
+</table>
+
+
+{%endblock content%}

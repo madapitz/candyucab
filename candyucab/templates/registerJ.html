@@ -1,0 +1,111 @@
+{% from "_render_field.html" import render_field %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css' )}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='regentr.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilo1.css') }}">
+    <title>Registro</title>
+  </head>
+  <body>
+    {%block content%}
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active logo" href="{{ url_for('home') }}">Candy <span class="cu">Ucab</span></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="estructura px-3">
+        <form class="formulario" method="POST">
+            {{ form.hidden_tag() }}
+            <div class="text-center cabecera p-0">
+                <h1>Ingresa tus datos</h1>
+            </div>
+            <fieldset class="form-group cuerpo mt-3">
+                {% with messages = get_flashed_messages(with_categories=true)%}
+                      {% if messages%}
+                        {%for category,message in messages%}
+                          <div class="alert alert-{{ category}}">
+                            {{message}}
+                          </div>
+                        {%endfor%}
+                      {%endif%}
+                {% endwith%}
+                <div class="form-group">
+                {{ render_field(form.rif) }}
+              </div>
+              <div class="form-group">
+              {{ render_field(form.email) }}
+            </div>
+            <div class="form-group">
+            {{ render_field(form.demcom) }}
+          </div>
+                    <div class="form-group">
+                    {{ render_field(form.razsoc) }}
+                  </div>
+                  <div class="form-group">
+                  {{ render_field(form.pagweb) }}
+                </div>
+                <div class="form-group">
+                {{ render_field(form.capdis) }}
+              </div>
+              <div class="form-row">
+                <legend class="border-bottom mb-4">Direccion Fiscal</legend>
+              <div class="col">
+                {{ render_field(form.estados1)}}
+              </div>
+              <div class="col">
+                {{ render_field(form.municipios1)}}
+              </div>
+              <div class="col">
+                {{ render_field(form.parroquias1)}}
+              </div>
+            </div>
+            <div class="form-row">
+              <legend class="border-bottom mb-4">Direccion Fisica</legend>
+            <div class="col">
+              {{ render_field(form.estados2)}}
+            </div>
+            <div class="col">
+              {{ render_field(form.municipios2)}}
+            </div>
+            <div class="col">
+              {{ render_field(form.parroquias2)}}
+            </div>
+          </div>
+          <div class="form-group">
+          {{ render_field(form.username) }}
+        </div>
+            <div class="form-group">
+            {{ render_field(form.password) }}
+          </div>
+          <div class="form-group">
+          {{ render_field(form.confim_password) }}
+        </div>
+        <div class="form-group">
+          {{ form.submit(class="btn btn-primary btn-block") }}
+        </div>
+            </fieldset>
+
+        </form>
+        <p class="cuerpo no_esta mt-3">
+            ¿Tienes cuenta?
+            <a href="{{ url_for('register') }}">Ingresa Aqui<a>
+        </p>
+    </main>
+    {%endblock content%}
+    <script src="{{ url_for('static', filename='jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='registroJ.js' )}}"></script>
+
+  </body>
+</html>

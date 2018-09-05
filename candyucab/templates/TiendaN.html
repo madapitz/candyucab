@@ -1,0 +1,67 @@
+{%extends "layout2.html"%}
+{% from "_render_field.html" import render_field %}
+{% block content %}
+          <form class="formulario" method="POST">
+            {{form.hidden_tag()}}
+            <div class="text-center cabecera p-0">
+                <h1>Ingrese datos</h1>
+            </div>
+              <fieldset class="form-group cuerpo mt-3">
+            <div class="form-group">
+            {{ render_field(form.rif) }}
+          </div>
+          <div class="form-group">
+          {{ render_field(form.email)}}
+        </div>
+            <div class="form-row">
+              <legend class="border-bottom mb-4">Nombres</legend>
+            <div class="col">
+              {{ render_field(form.nom1)}}
+            </div>
+            <div class="col">
+              {{render_field(form.nom2)}}
+            </div>
+          </div>
+          <div class="form-row">
+            <legend class="border-bottom mb-4">Apellidos</legend>
+          <div class="col">
+            {{render_field(form.ap1)}}
+          </div>
+              <div class="col">
+                {{render_field(form.ap2)}}
+              </div>
+            </div>
+            <div class="form-group">
+            {{ render_field(form.ci)}}
+          </div>
+            <div class="form-row">
+              <legend class="border-bottom mb-4">Direccion Personal</legend>
+            <div class="col">
+              {{ render_field(form.estados)}}
+            </div>
+            <div class="col">
+              {{ render_field(form.municipios)}}
+            </div>
+            <div class="col">
+              {{ render_field(form.parroquias) }}
+            </div>
+          </div>
+          <div class="form-group">
+          {{ render_field(form.tienda)}}
+        </div>
+        <div class="form-check">
+          {{form.carnet(class="form-check-input")}}
+          {{form.carnet.label(class="form-check-label")}}
+        </div>
+        <div class="form-group">
+          {{ form.submit(class="btn btn-primary btn-block") }}
+        </div>
+            </fieldset>
+          </form>
+          <p class="cuerpo no_esta mt-3">
+              <a href="{{ url_for('clientes') }}">Ver Clientes<a>
+          </p>
+    <script src="{{ url_for('static', filename='jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='registroN.js' )}}"></script>
+    {%endblock content%}

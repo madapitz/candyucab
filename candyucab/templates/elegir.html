@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cliente_home.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='zaratustra.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='inventario.css') }}">
+</head>
+<body>
+
+
+<header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand open_btn" href="#"><img src="{{ url_for('static',filename='menu.png') }}" class="menu"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active logo" href="{{ url_for('cliente_home') }}">Candy <span class="cu">Ucab</span></a>
+            </div>
+
+        </div>
+    </nav>
+
+
+
+</header>
+
+{% block content %}
+<main class="text-center">
+    {% if op=='n' %}
+    <h2>Elija el método de pago</h2>
+   <div class="row proust">
+       <a id="tarc" class="col-4 btn btn-primary" href="{{ url_for('elegir',cf_id=cf_id,precio=precio,tipo=tipo,cid=cid,op='tc',car_id=car_id) }}">Tarjeta de Crédito</a>
+       <a id="tard" class="col-4 btn btn-primary" href="{{ url_for('elegir',cf_id=cf_id,precio=precio,tipo=tipo,cid=cid,op='td',car_id=car_id) }}">Tarjeta de Débito</a>
+       <a id="cheq" class="col-4 btn btn-primary" href="{{ url_for('elegir',cf_id=cf_id,precio=precio,tipo=tipo,cid=cid,op='ch',car_id=car_id) }}">Cheque</a>
+   </div>
+    {% elif op=='tc' %}
+        <h2 class="titulo_tabla">Tarjetas de crédito</h2>
+        <table class="table table-hover tiendas">
+            <thead>
+                <tr>
+                    <th scope="col">Número</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpot">
+                {% for medio in medios %}
+                <tr>
+                    <td><a href="{{ url_for('pagandof',cf_id=cf_id,op='tc',mid=medio[1],precio=precio, car_id=car_id) }}">{{ medio[0] }}</a></td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% elif op=='td' %}
+        <h2 class="titulo_tabla">Tarjetas de débito</h2>
+        <table class="table table-hover tiendas">
+            <thead>
+                <tr>
+                    <th scope="col">Número</th>
+                    <th scope="col">Banco</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpot">
+                {% for medio in medios %}
+                <tr>
+                    <td><a href="{{ url_for('pagandof',cf_id=cf_id,op='td',mid=medio[2],precio=precio,car_id=car_id) }}">{{ medio[0] }}</a></td>
+                    <td>{{ medio[1] }}</td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% elif op=='ch' %}
+        <h2 class="titulo_tabla">Cheques</h2>
+        <table class="table table-hover tiendas">
+            <thead>
+                <tr>
+                    <th scope="col">Número</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpot">
+                {% for medio in medios %}
+                <tr>
+                    <td><a href="{{ url_for('pagandof',cf_id=cf_id,op='tc',mid=medio[1],precio=precio,car_id=car_id) }}">{{ medio[0] }}</a></td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</main>
+{% endblock %}
+
+<script src="{{ url_for('static', filename='jquery-3.3.1.min.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='bootstrap.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='cliente_home.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='inv.js') }}" type="text/javascript"></script>
+</body>
+</html>

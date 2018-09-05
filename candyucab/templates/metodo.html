@@ -1,0 +1,19 @@
+{%extends "layout2.html"%}
+{% from "_render_field.html" import render_field %}
+{% block content %}
+
+  {% if current_user.cj_id != None%}
+  <div class="btn-group-vetical">
+    <a href="{{url_for('credito',c_id = current_user.cj_id,tipo = 'cj')}}" class="btn btn-primary btn-block">Credito</a>
+    <a href="{{url_for('debito',c_id = current_user.cj_id,tipo = 'cj')}}" class="btn btn-primary btn-block">Debito</a>
+    <a href="{{url_for('cheque',c_id = current_user.cj_id,tipo = 'cj')}}" class="btn btn-primary btn-block">Cheque</a>
+  </div>
+ {% else %}
+ <div class="btn-group-vetical" >
+   <a href="{{url_for('credito',c_id = current_user.cn_id,tipo = 'cn')}}" class="btn btn-primary btn-block">Credito</a>
+   <a href="{{url_for('debito',c_id = current_user.cn_id,tipo = 'cn')}}" class="btn btn-primary btn-block">Debito</a>
+   <a href="{{url_for('cheque',c_id = current_user.cn_id,tipo = 'cn')}}" class="btn btn-primary btn-block">Cheque</a>
+ </div>
+{% endif %}
+
+{% endblock %}

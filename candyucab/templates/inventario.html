@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cliente_home.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='inventario.css') }}">
+</head>
+<body>
+
+
+<header>
+    <div id="myNav" class="overlay">
+
+        <!-- Button to close the overlay navigation -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+        <!-- Overlay content -->
+        <div class="overlay-content">
+            <a id="nombre" href="#">Nombre</a>
+            <a href="#">Perfil</a>
+            <a href="#">Compras</a>
+            <a href="#">Puntos</a>
+            <a href="#">Productos</a>
+            <a href="#">Acerca</a>
+        </div>
+
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand open_btn" href="#"><img src="{{ url_for('static',filename='menu.png') }}" class="menu"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active logo" href="{{ url_for('cliente_home') }}">Candy <span class="cu">Ucab</span></a>
+            </div>
+
+        </div>
+    </nav>
+
+
+
+</header>
+
+
+<main class="text-center">
+    {% block content %}
+    <h2 class="titulo_tabla">Inventario: {{ nombret }}</h2>
+    <table class="table table-hover tiendas">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody id="cuerpot">
+            {% for producto in productos %}
+            <tr>
+                <td><img src="{{ url_for('static',filename = 'images/'+producto[3]) }}"></td>
+                <td>{{ producto[0] }}</td>
+                <td>{{ producto[1] }}</td>
+                <td>{{ producto[2] }}</td>
+                <td>
+                  {% if current_user.cj_id==None and current_user.cn_id==None %}
+                  <form action="{{ url_for('zaratustra', i_id=producto[5], precio=producto[1]) }}" method="POST">
+                      <input type="text" name="cantidadp" class="form-control cantidad">
+                      <input type="submit" class="btn btn-primary carrito" value="&#43;">
+                  </form>
+                  {% else %}
+                    <form action="{{ url_for('presupuesto', u_id=current_user.u_id, pid=producto[4], iid=producto[5]) }}" method="POST">
+                        <input type="text" name="cantidadp" class="form-control cantidad">
+                        <input type="submit" class="btn btn-primary carrito" value="&#43;">
+                    </form>
+                  {%endif%}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
+</main>
+
+<script src="{{ url_for('static', filename='jquery-3.3.1.min.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='bootstrap.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='cliente_home.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='inv.js') }}" type="text/javascript"></script>
+</body>
+</html>

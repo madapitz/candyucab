@@ -1,0 +1,95 @@
+{%extends "layout2.html"%}
+{% from "_render_field.html" import render_field %}
+{% block content %}
+<form class="formulario" method="POST">
+    {{ form.hidden_tag() }}
+    <div class="text-center cabecera p-0">
+        <h1>Ingrese datos</h1>
+    </div>
+            {% with messages = get_flashed_messages(with_categories=true)%}
+                  {% if messages%}
+                    {%for category,message in messages%}
+                      <div class="alert alert-{{ category}}">
+                        {{message}}
+                      </div>
+                    {%endfor%}
+                  {%endif%}
+                {% endwith%}
+                <div class="form-group">
+                {{ render_field(form.rif) }}
+              </div>
+              <div class="form-group">
+              {{ render_field(form.email) }}
+            </div>
+            <div class="form-group">
+            {{ render_field(form.demcom) }}
+          </div>
+                    <div class="form-group">
+                    {{ render_field(form.razsoc) }}
+                  </div>
+                  <div class="form-group">
+                  {{ render_field(form.pagweb) }}
+                </div>
+                <div class="form-group">
+                {{ render_field(form.capdis) }}
+              </div>
+              <div class="form-row">
+                <legend class="border-bottom mb-4">Direccion Fiscal</legend>
+              <div class="col">
+                {{ render_field(form.estados1)}}
+              </div>
+              <div class="col">
+                {{ render_field(form.municipios1)}}
+              </div>
+              <div class="col">
+                {{ render_field(form.parroquias1)}}
+              </div>
+            </div>
+            <div class="form-row">
+              <legend class="border-bottom mb-4">Direccion Fisica</legend>
+            <div class="col">
+              {{ render_field(form.estados2)}}
+            </div>
+            <div class="col">
+              {{ render_field(form.municipios2)}}
+            </div>
+            <div class="col">
+              {{ render_field(form.parroquias2)}}
+            </div>
+          </div>
+          <div class="form-group">
+            {{ form.submit(class="btn btn-primary btn-block") }}
+          </div>
+      </fieldset>
+
+    </form>
+    <p class="cuerpo no_esta mt-3">
+        <a href="{{ url_for('clientes') }}">Ver Clientes<a>
+    </p>
+    <div class="form-col">
+      <button class="btn btn-danger btn-sm m-1" type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+    </div>
+    <!-- Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Eliminar Cliente?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form class="" action="{{ url_for('delete_cliente',c_id = c_id,tipo = 'cj')}}" method="POST">
+            <input class="btn btn-danger" type="submit" name="" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    {%endblock content%}
+    <script src="{{ url_for('static', filename='jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='registroJ.js' )}}"></script>

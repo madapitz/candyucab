@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cliente_home.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='compras.css') }}">
+</head>
+<body>
+
+<header>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand open_btn" href="#"><img src="../static/menu.png" class="menu"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active logo" href="{{ url_for('cliente_home') }}">Candy <span class="cu">Ucab</span></a>
+            </div>
+
+        </div>
+    </nav>
+
+
+
+</header>
+
+
+<main class="text-center">
+    <h2 class="titulo_tabla">Compras</h2>
+    <table class="table table-hover tiendas">
+        <thead>
+            <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Total</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpot">
+            {% block content %}
+                {% for compra in comprasv %}
+                    <tr>
+                        <td>{{ compra[0] }}</td>
+                        <td>{{ compra[1] }}</td>
+                        <td>{{ compra[2] }}</td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+            {% endblock %}
+        <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{ total[0] }}</td>
+                    </tr>
+        </tbody>
+    </table>
+    {% if current_user.cj_id != None %}
+    <form action="{{url_for('pagando', tipo='cj', c_id=current_user.cj_id, u_id=current_user.u_id,op='n',pusar=0)}}" method="POST">
+        <input type="submit" class="btn btn-primary pagar" value="Pagar">
+    </form>
+    {% else %}
+    <form action="{{url_for('pagando', tipo='cn', c_id=current_user.cn_id, u_id=current_user.u_id,op='n',pusar=0)}}" method="POST">
+        <input type="submit" class="btn btn-primary pagar" value="Pagar">
+    </form>
+    {% endif %}
+</main>
+
+<script src="{{ url_for('static', filename='jquery-3.3.1.min.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='bootstrap.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='cliente_home.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='compras.js') }}" type="text/javascript"></script>
+</body>
+</html>

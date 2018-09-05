@@ -1,0 +1,22 @@
+{%extends "layout2.html"%}
+{% from "_render_field.html" import render_field %}
+{% block content %}
+<form class="formulario" method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+              {{ form.excel.label() }}
+              {{ form.excel(class="form-control-file") }}
+              {% if form.excel.errors %}
+                  {% for error in form.excel.errors %}
+                      <span class="text-danger">{{ error }}</span></br>
+                  {% endfor %}
+              {% endif %}
+      </div>
+<div class="form-group">
+  {{ form.submit(class="btn btn-primary btn-block") }}
+</div>
+    </fieldset>
+
+</form>
+
+{% endblock %}

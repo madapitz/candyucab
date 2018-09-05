@@ -1,0 +1,83 @@
+{% from "_render_field.html" import render_field %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css' )}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilo1.css' )}}">
+    <title>Registro</title>
+  </head>
+  <body style="background-color:#e06666;">
+    {%block content%}
+    <div class="container" style="background-color:white; ">
+          <form class="" action="" method="POST" style="margin: 0 auto; width:40% ">
+            {{form.hidden_tag()}}
+            <fieldset class="form-group">
+              <img src="../static/dulce.png" alt="" class="rounded mx-auto d-block">
+            <h2 class="border-bottom mb-4">Registro:Cliente Natural</h2>
+            <div class="form-group">
+            {{ render_field(form.rif) }}
+          </div>
+          <div class="form-group">
+          {{ render_field(form.email)}}
+        </div>
+            <div class="form-row">
+              <legend class="border-bottom mb-4">Nombres</legend>
+            <div class="col">
+              {{ render_field(form.nom1)}}
+            </div>
+            <div class="col">
+              {{render_field(form.nom2)}}
+            </div>
+          </div>
+          <div class="form-row">
+            <legend class="border-bottom mb-4">Apellidos</legend>
+          <div class="col">
+            {{render_field(form.ap1)}}
+          </div>
+              <div class="col">
+                {{render_field(form.ap2)}}
+              </div>
+            </div>
+            <div class="form-group">
+            {{ render_field(form.ci)}}
+          </div>
+            <div class="form-row">
+              <legend class="border-bottom mb-4">Direccion Personal</legend>
+            <div class="col">
+              {{ render_field(form.estados)}}
+            </div>
+            <div class="col">
+              {{ render_field(form.municipios)}}
+            </div>
+            <div class="col">
+              {{ render_field(form.parroquias) }}
+            </div>
+          </div>
+            <div class="form-group">
+            {{ render_field(form.username) }}
+          <div class="form-group">
+          {{ render_field(form.password)}}
+        </div>
+        <div class="form-group">
+          {{render_field(form.confim_password)}}
+        </div>
+            </fieldset>
+              <div class="form-group">
+          {{ form.submit(class="btn btn-outline-info") }}
+          </div>
+          </form>
+          <div class="border-top pt-3">
+            <small class="text-muted">
+              Tienes cuenta? <a class="ml-2" href="{{url_for('login')}}">Ingresar</a>
+            </small>
+
+          </div>
+    </div>
+    {%endblock content%}
+    <script src="{{ url_for('static', filename='jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='registroN.js') }}"></script>
+  </body>
+</html>

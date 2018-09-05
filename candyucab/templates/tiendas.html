@@ -1,0 +1,31 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="container">
+  <h3>Tiendas</h3>
+  <p class="">
+      <a href="{{ url_for('create_tienda') }}">Registrar Tienda<a>
+  </p>
+
+</div>
+
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">Tipo de tienda  </th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Lugar</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for tienda in tiendas %}
+      <tr>
+      <th scope="row">{{tienda['ti_tipo']}}</th>
+      <td> <a  class="mr-2" href="{{ url_for('update_tienda',ti_id= tienda['ti_id']) }}">{{tienda['ti_nombre']}}</a></td>
+      <td>{{tienda['dir']}}</td>
+      </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+
+{%endblock content%}

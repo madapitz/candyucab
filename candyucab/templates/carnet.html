@@ -1,0 +1,28 @@
+{%extends "layout.html"%}
+{% block content%}
+{% if 'cj' == tipo|string() %}
+<div class="card text-center" style="width: 18rem;">
+  <div class="card-header">Carnet</div>
+  <div class="card-body">
+    <p class="card-text">{{cliente['cj_demcom']}}</p>
+    <p class="card-text">{{cliente['cj_rif']}}</p>
+    <p class="card-text">{{cliente['car_num']}}</p>
+    <p class="card-text">{{cliente['ti_nombre']}}</p>
+    <a href="{{url_for('clientes')}}" class="btn btn-primary">Regresar a clientes</a>
+  </div>
+</div>
+{% endif%}
+
+{% if 'cn' == tipo|string() %}
+<div class="card text-center" style="width: 18rem;">
+  <div class="card-header">Carnet</div>
+  <div class="card-body">
+    <p class="card-text">{{cliente['cn_nom1']}} {{cliente['cn_ap1']}}</p>
+    <p class="card-text">{{cliente['cn_ci']}}</p>
+    <p class="card-text">{{cliente['car_num']}}</p>
+    <p class="card-text">{{cliente['ti_nombre']}}</p>
+    <a href="{{url_for('clientes')}}" class="btn btn-primary">Regresar a clientes</a>
+  </div>
+</div>
+{% endif%}
+{%endblock%}

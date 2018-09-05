@@ -1,0 +1,26 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="form-group">
+  <h3>Clientes Con Mayor Cantidad De Puntos</h3>
+
+</div>
+<table class="table table-hover tiendas">
+  <thead>
+    <tr>
+      <th scope="col">RIF  </th>
+      <th scope="col">Cantidad de Puntos</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for cliente in clientes %}
+      <tr>
+      <th scope="row">{{cliente['rif']}}</th>
+      <td>{{cliente['cantidad']}}</td>
+      </tr>
+    {% endfor %}
+    </tr>
+  </tbody>
+</table>
+
+
+{%endblock content%}

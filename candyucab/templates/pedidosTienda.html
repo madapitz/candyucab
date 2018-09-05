@@ -1,0 +1,26 @@
+{%extends "layout.html"%}
+{%block content%}
+
+<h2>Pedidos de tienda</h2>
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>Fecha de entrega</th>
+      <th>Tienda</th>
+      <th>Estatus</th>
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for tienda in tiendas %}
+      <tr>
+      <td>{{tienda['ped_fentrega']}}</td><td> {{tienda['ti_nombre']}}</a></td>
+      <td>{{tienda['es_tipo']}}</td>
+      <tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+
+{%endblock content%}

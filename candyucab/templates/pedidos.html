@@ -1,0 +1,52 @@
+{%extends "layout.html"%}
+{%block content%}
+
+<h2>Pedidos de tiendas</h2>
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+
+      <th>Fecha de entrega</th>
+      <th>Tienda</th>
+      <th>Estatus</th>
+      <th>Cambiar</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for tienda in tiendas %}
+      <tr>
+      <td>{{tienda['ped_fentrega']}}</td><td> {{tienda['ti_nombre']}}</a></td>
+      <td>{{tienda['es_tipo']}}</td>
+      <td><a class="mr-2" href="{{ url_for('update_estatus',ped_id=tienda['ped_id']) }}">Cambiar</a></td>
+      <tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+</div>
+
+<h2>Pedidos de clientes</h2>
+
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>Fecha de entrega</th>
+      <th>RIF</th>
+      <th>Estatus</th>
+      <th>Cambiar</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for cliente in clientes %}
+      <tr>
+      <td>{{cliente['ped_fentrega']}}</td><td> {{cliente['rif']}}</a></td>
+      <td>{{cliente['es_tipo']}}</td><td><a class="mr-2" href="{{ url_for('update_estatus',ped_id=cliente['ped_id']) }}">Cambiar</a></td>
+      <tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+{%endblock content%}

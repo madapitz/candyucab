@@ -1,0 +1,26 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="form-group">
+  <h3>Tipo de Producto Mas Utilizado en Productos</h3>
+
+</div>
+<table class="table table-hover tiendas">
+  <thead>
+    <tr>
+      <th scope="col">Tipo del Producto</th>
+      <th scope="col">Cantidad de Productos</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+      <tr>
+      <th scope="row">{{tipoProducto['tp_nombre']}}</th>
+      <td>{{tipoProducto['cantidad']}}</td>
+
+    </tr>
+  </tbody>
+</table>
+
+
+{%endblock content%}

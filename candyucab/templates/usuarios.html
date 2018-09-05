@@ -1,0 +1,56 @@
+{%extends "layout3.html"%}
+{%block content%}
+<div class="form-group">
+  <p class="">
+      <a href="{{ url_for('create_usuario') }}">Registrar Usuario de empleado<a>
+  </p>
+
+</div>
+
+<div class="row">
+<div class="col-md-6">
+<h3>Usuarios de clientes</h3>
+<table class="table table-hover table-responsive" >
+  <thead>
+    <tr>
+      <th>Username  </th>
+      <th>RIF</th>
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for cliente in usuariosC %}
+      <tr>
+      <td><a  class="mr-2" href="{{ url_for('update_usuario_cliente',u_id= cliente['u_id']) }}">
+        {{cliente['u_username']}}</a></td><td>{{cliente['rif']}} </td>
+      <tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+<div class="col-md-6">
+<h3>Usuarios de Empleados</h3>
+
+<table class="table table-hover table-responsive" >
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Cedula</th>
+      <th>Rol</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for empleado in usuariosE %}
+      <tr>
+      <td> <a class="mr-2" href="{{ url_for('update_usuario_empleado',u_id= empleado['u_id']) }}">
+        {{empleado['u_username']}}</a></td>
+        <td>{{empleado['e_ci']}}</td>
+      <td>{{empleado['rol']}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+
+{%endblock content%}

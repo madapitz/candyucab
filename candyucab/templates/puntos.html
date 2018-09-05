@@ -1,0 +1,28 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="container">
+  <h3>Ofertas</h3>
+  <p class="">
+      <a href="{{ url_for('create_puntos') }}">Crear Punto<a>
+  </p>
+</div>
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">Fecha</th>
+      <th scope="col">Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for punto in puntos %}
+      <tr>
+      <th scope="row">{{punto['h_fecha']}}</th>
+      <td><a  class="mr-2" href="{{ url_for('update_puntos',h_id=punto['h_id']) }}">{{punto['h_precio']}} </a></td>
+      </tr>
+    {% endfor %}
+    </tr>
+  </tbody>
+</table>
+
+
+{%endblock content%}

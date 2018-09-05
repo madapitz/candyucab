@@ -1,0 +1,35 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="form-group">
+  <h3>Asistencia</h3>
+
+</div>
+<table class="table table-hover tiendas">
+  <thead>
+    <tr>
+      <th scope="col">Cedula  </th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Tienda</th>
+      <th scope="col">Dia</th>
+      <th scope="col">Hora Entrada</th>
+      <th scope="col">Hora Salida</th>
+
+    </tr>
+  </thead>
+  <tbody>
+      {% for empleado in empleados %}
+      <tr>
+      <th scope="row">{{empleado['e_ci']}}</th>
+      <td>{{empleado['e_nombre']}}</td><td>{{empleado['e_apellido']}}</td>
+      <td>{{empleado['ti_nombre']}}</td>
+    <td>{{empleado['dia']}}</td><td>{{empleado['entrada']}}</td>
+    <td>{{empleado['salida']}}</td>
+      </tr>
+    {% endfor %}
+    </tr>
+  </tbody>
+</table>
+
+
+{%endblock content%}

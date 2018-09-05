@@ -1,0 +1,67 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="form-group">
+  <h3>Clientes</h3>
+  <p class="">
+      <a href="{{ url_for('registro',tipo = 'cn') }}">Registrar Cliente Natural<a>
+  </p>
+ <p class="">
+  <a href="{{ url_for('registro',tipo = 'cj') }}">Registrar Cliente Juridico<a>
+  </p>
+</div>
+<h3>Cliente Juridicos</h3>
+<div class="table-responsive">
+
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>RIF  </th>
+      <th>Email</th>
+      <th>Denominacion Comercial</th>
+      <th>Razon Social</th>
+      <th>Pagina Web</th>
+      <th>Capital Disponible</th>
+      <th>Direccion Fisica</th>
+      <th>Direccion Fiscal</th>
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for cliente in cj %}
+      <tr>
+      <td>{{cliente['cj_rif']}}</td><td> <a  class="mr-2" href="{{ url_for('update_cliente',c_id= cliente['cj_id'],tipo='cj') }}">{{cliente['cj_email']}}</a></td>
+      <td>{{cliente['cj_demcom']}}</td><td>{{cliente['cj_razsoc']}}</td>
+      <td>{{cliente['cj_pagweb']}}</td><td>{{cliente['cj_capdis']}}</td><td>{{cliente['fisica']}}</td><td>{{cliente['fiscal']}}</td>
+      <tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+
+<h3>Cliente Naturales</h3>
+
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>RIF</th>
+      <th>Email</th>
+      <th>Primer Nombre</th>
+      <th>Segundo Nombre</th>
+      <th>Primer Apellido</th>
+      <th>Segundo Apellido</th>
+      <th>Direccion</th>
+      <th>Cedula</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for cliente in cn %}
+      <tr>
+      <td>{{cliente['cn_rif']}}</td><td> <a class="mr-2" href="{{ url_for('update_cliente',c_id= cliente['cn_id'],tipo='cn') }}">{{cliente['cn_email']}}</a></td>
+      <td>{{cliente['cn_nom1']}}</td><td>{{cliente['cn_nom2']}}</td>
+      <td>{{cliente['cn_ap1']}}</td><td>{{cliente['cn_ap2']}}</td><td>{{cliente['dir']}}</td><td>{{cliente['cn_ci']}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{%endblock content%}

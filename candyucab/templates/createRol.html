@@ -1,0 +1,63 @@
+{%extends "layout2.html"%}
+{% from "_render_field.html" import render_field %}
+{% block content %}
+<form class="formulario" method="POST">
+    {{ form.hidden_tag() }}
+    <div class="text-center cabecera p-0">
+        <h1>Ingrese datos del producto</h1>
+    </div>
+    <fieldset class="form-group cuerpo mt-3">
+        {% with messages = get_flashed_messages(with_categories=true)%}
+              {% if messages%}
+                {%for category,message in messages%}
+                  <div class="alert alert-{{ category}}">
+                    {{message}}
+                  </div>
+                {%endfor%}
+              {%endif%}
+        {% endwith%}
+
+      <div class="form-group">
+      {{ render_field(form.nombre) }}
+    </div>
+
+      {%for permiso in form.permisos%}
+      <div class="form-group">
+        {{ render_field(permiso) }}
+      </div>
+      {%endfor%}
+
+<div class="form-group">
+  {{ form.submit(class="btn btn-primary btn-block") }}
+</div>
+    </fieldset>
+
+</form>
+<p class="cuerpo no_esta mt-3">
+    <a href="{{ url_for('rol') }}">Ver Roles<a>
+</p>
+{% if r_id %}
+<div class="form-col">
+  <button class="btn btn-danger btn-sm m-1" type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Eliminar Rol?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <form class="" action="{{ url_for('delete_rol',r_id = r_id)}}" method="POST">
+          <input class="btn btn-danger" type="submit" name="" value="Delete">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%endif%}
+{% endblock %}

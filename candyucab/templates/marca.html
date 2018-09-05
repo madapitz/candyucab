@@ -1,0 +1,26 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="form-group">
+  <h3>Marca De Tarjeta De Credito Con Mas Usuarios</h3>
+
+</div>
+<table class="table table-hover tiendas">
+  <thead>
+    <tr>
+      <th scope="col">Marca  </th>
+      <th scope="col">Cantidad De Usuarios</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+      <tr>
+      <th scope="row">{{marca['tc_marca']}}</th>
+      <td>{{marca['cantidad']}}</td>
+
+    </tr>
+  </tbody>
+</table>
+
+
+{%endblock content%}

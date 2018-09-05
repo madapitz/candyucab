@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Candy Ucab</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilo1.css') }}">
+</head>
+<body>
+
+<header>
+    <div id="myNav" class="overlay">
+
+        <!-- Button to close the overlay navigation -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+        <!-- Overlay content -->
+        <div class="overlay-content">
+            <a href="#">Servicios</a>
+            <a href="#">Contacto</a>
+            <a href="#">Empleados</a>
+            <a href="#">Sobre Nosotros</a>
+        </div>
+
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand open_btn" href="#"><img src="../static/menu.png" class="menu"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active logo" href="#">Candy <span class="cu">Ucab</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="img_fondo">
+        <div></div>
+    </section>
+
+    <section class="botones_entrada row text-center">
+      {% if current_user.is_authenticated %}
+        <a href="{{url_for('logout')}}" class="col-6 entrada">Cerrar Sesion</a>
+        {% if current_user.cj_id != None%}
+          <a href="{{url_for('new_persona',c_id=current_user.cj_id)}}" class="col-6 entrada">Agregar Persona De Contacto</a>
+          <a href="{{url_for('new_tlf',tipo = 'cj',c_id=current_user.cj_id)}}" class="col-6 entrada">Agregar Telefono</a>
+          <a href="{{url_for('metodo')}}" class="col-6 entrada">Agregar Metodo de Pago</a>
+        {%endif%}
+        {% if current_user.cn_id != None%}
+          <a href="{{url_for('metodo')}}" class="col-6 entrada">Agregar Metodo de Pago</a>
+          <a href="{{url_for('new_tlf',tipo = 'cn',c_id=current_user.cn_id)}}" class="col-6 entrada">Agregar Telefono</a>
+        {%endif%}
+        {% if current_user.e_id != None%}
+          <a href="{{url_for('tiendas')}}" class="col-6 entrada">Tiendas</a>
+          <a href="{{url_for('clientes')}}" class="col-6 entrada">Clientes</a>
+          <a href="{{url_for('productos')}}" class="col-6 entrada">Productos</a>
+          <a href="{{url_for('asistencia')}}" class="col-6 entrada">Asistencia</a>
+          <a href="{{url_for('ofertas',e_id=current_user.e_id)}}" class="col-6 entrada">Diario Dulce</a>
+          <a href="{{url_for('pedidos')}}" class="col-6 entrada">Estatus Pedidos</a>
+          <a href="{{url_for('pedidos_tiendas')}}" class="col-6 entrada">Pedido Por Tienda</a>
+          <a href="{{url_for('puntos')}}" class="col-6 entrada">Puntos</a>
+          <a href="{{url_for('cliente_home')}}" class="col-6 entrada">Caja</a>
+          <a href="{{url_for('rol')}}" class="col-6 entrada">Roles</a>
+          <a href="{{url_for('usuarios')}}" class="col-6 entrada">Usuarios</a>
+          <a href="{{url_for('reportes')}}" class="col-6 entrada">Reportes</a>
+        {%endif%}
+       {% else %}
+       <a href="{{url_for('login')}}" class="col-6 entrada">Entrar</a>
+       <a href="{{url_for('register')}}" class="col-6 registro">Registrarse</a>
+      {% endif %}
+
+</section>
+
+
+
+</header>
+
+<script src="{{ url_for('static', filename='jquery-3.3.1.min.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='bootstrap.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='estilo1.js') }}" type="text/javascript"></script>
+</body>
+</html>

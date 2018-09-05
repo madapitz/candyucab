@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../static/estilo1.css">
+    <title>Registro</title>
+  </head>
+  <body style="background-color:#e06666;">
+    {%block content%}
+    <div class="container" style="background-color:white; ">
+      <form class="" action="" method="POST" style="margin: 0 auto; width:40% ">
+          <img src="../static/dulce.png" alt="" class="rounded mx-auto d-block">
+        <h2 class="border-bottom mb-4">Registro</h2>
+        <div class="form-group">
+          <a href="{{url_for('registerJ')}}" class="btn btn-outline-info">Cliente Juridico</a>
+          <a href="{{url_for('registerN')}}" class="btn btn-outline-info">Cliente Natural</a>
+      </div>
+    </form>
+      </div>
+    {%endblock content%}
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/estilo1.js"></script>
+  </body>
+</html>
